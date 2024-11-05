@@ -1,5 +1,5 @@
 Web II. - Kötelező Házi Feladat
 
 Csapat:
-Hoki Attila
-Koltai Armand
+- Hoki Attila
+- Koltai Armand

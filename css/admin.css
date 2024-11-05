@@ -1,0 +1,92 @@
+.favorites {
+    width: 80%;
+    margin: auto;
+    background-color: #eee;
+}
+
+.submenu {
+    width: 80%;
+    margin: auto;
+}
+.form-container {
+     background-color: #fff;
+     border-radius: 8px;
+     padding: 20px;
+     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+     width: 80%;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between; /* Elemek elrendezése a konténerben */
+ }
+
+.form-left,
+.form-right {
+    width: 48%; /* Mindkét konténer szélessége */
+}
+
+input[type="file"]::file-selector-button {
+    border-radius: 4px;
+    padding: 0 16px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    margin-right: 16px;
+    transition: background-color 200ms;
+}
+
+/* file upload button hover state */
+input[type="file"]::file-selector-button:hover {
+    background-color: #f3f4f6;
+}
+
+/* file upload button active state */
+input[type="file"]::file-selector-button:active {
+    background-color: #e5e7eb;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.file-input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 auto; /* Középre igazítás */
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    text-align: center; /* A szöveg középre igazítása */
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%; /* A gomb teljes szélessége */
+    display: block; /* A gomb teljes szélességű legyen, és középre igazítva legyen */
+    margin-top: 10px; /* Távolság a fájl input mezőtől */
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.centeredupload {
+    margin: auto;
+    width: 22em;
+    float: left;
+}

@@ -1,0 +1,40 @@
+.form-container {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: auto;
+    background: #DDDDDD
+}
+body {
+    background-image: url('../img/loginbg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="submit"],
+select {
+    width: 100%; /* Teljes szélesség a konténerhez igazítva */
+    padding: 8px 10px; /* Padding a szöveg körül */
+    margin: 8px 0; /* Margin minden egyes input mező között */
+    display: inline-block; /* Biztosítja, hogy a mezők sorokban jelenjenek meg */
+    border: 1px solid #ccc; /* Szürke szegély */
+    border-radius: 4px; /* Enyhe ívelt sarkok a szegélyen */
+    box-sizing: border-box; /* A szélesség magában foglalja a paddingot és a border-t is */
+}
+
+.form-container input[type="submit"] {
+    background-color: #141628;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #141628;
+}

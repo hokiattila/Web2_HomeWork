@@ -1,0 +1,14 @@
+#toast-container > .toast-error {
+    background-color: #141628;
+    margin-top: 100px;
+}
+
+#toast-container > .toast-success {
+    background-color: #388E3C;
+    margin-top: 100px;
+}
+
+#toast-container > .toast {
+    width: 450px;
+    border-radius: 8px;
+}

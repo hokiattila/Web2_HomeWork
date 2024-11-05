@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+body{
+    font-family: sans-serif;
+    min-height: 100vh;
+    color: #555;
+    padding: 30px;
+}
+
+a{
+    display: inline-block;
+    text-decoration: none;
+    color: #006cb3;
+    padding: 10px 20px;
+    border: thin solid #d4d4d4;
+    transition: all 0.3s;
+    font-size: 18px;
+}
+
+a.active{
+    background-color: #0d81cd;
+    color: #fff;
+}
+.page-info{
+    margin-top: 90px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.pagination{
+    margin-top: 20px;
+}
+.content p{
+    margin-bottom: 15px;
+}
+.page-numbers{
+    display: inline-block;
+}

@@ -1,0 +1,91 @@
+/* 3 box design */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 30px;
+}
+
+.box {
+    width: 25%;
+    height: 25%;
+    background-image: linear-gradient(white, #eee);
+    /*border: 2px solid #ccc;*/
+    margin: 25px 20px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px; /* Kerekített sarok */
+
+}
+.box-tartalom {
+    padding: 10px;
+}
+.box-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.box-text {
+    font-size: 16px;
+    color: #333;
+}
+
+a {
+    /*text-decoration: none; /* Keresztülhúzás eltávolítása */
+    /*color: inherit; /* Az örökölt szövegszín használata */
+    cursor: pointer; /* Mutató ikon megjelenítése */
+}
+
+.star {
+    margin-top: auto;
+    margin-left: auto;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.deletestar {
+    margin-top: auto;
+    margin-left: auto;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.deletestar img {
+    width: 3em;
+    height: auto;
+}
+
+.deletestar img:hover {
+    opacity:0.4;
+}
+
+.deletestar img:active {
+    opacity:0.1;
+}
+.cartitle {
+    width: 50%;
+    display: flex;
+}
+.star img {
+    width: 3em;
+    height: auto;
+}
+
+.star img:hover {
+    opacity:0.4;
+}
+
+.star img:active {
+    opacity:0.1;
+}
+
+.tag1 {
+    background-color: #0d81cd22;
+}
+.tag2 {
+    background-color: #ffd70033;
+}
+.tag3 {
+    background-color: #FF000033;
+}

@@ -1,0 +1,66 @@
+.map-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.map-text {
+    flex-grow: 1;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+iframe {
+    flex-shrink: 0;
+}
+
+.review-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+.review {
+    margin-bottom: 20px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.rating {
+    color: #ffd700; /* arany csillagok */
+}
+
+.comment {
+    font-style: italic;
+}
+
+
+.intro-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+.intro-text {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+
+

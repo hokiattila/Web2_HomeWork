@@ -1,6 +1,6 @@
 <?php
     include_once("app/datacontroller.php");
-    if(isset($_SESSION['username'])) header("Location: index.php");
+    if(isset($_SESSION['username'])) header("Location: home.php");
     $controller = new DataController;
     $token = $controller->generateToken();
     $errorMessage = false;
@@ -44,11 +44,11 @@
 <div class="navbar">
     <!-- Logó -->
     <div class="logo">
-        <a href="index.php"><img src="img/logo.png" alt="Logó"></a>
+        <a href="home.php"><img src="img/logo.png" alt="Logó"></a>
     </div>
     <!-- Menüpontok -->
     <div class="menu">
-        <a href="index.php">Főoldal</a>
+        <a href="home.php">Főoldal</a>
         <a href="contact.php">Kapcsolat</a>
         <?php if(empty($_SESSION['username']) || empty($_SESSION['role'])): ?>
             <a href="login.php" <?php if(basename(__FILE__) == "login.php"): ?> class="<?php echo "activenav"; ?>"<?php endif;?>>Bejelentkezés</a>

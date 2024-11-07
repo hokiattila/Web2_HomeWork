@@ -1,59 +1,46 @@
-<?php
-    session_start();
-?>
+
 <!DOCTYPE HTML>
-<html lang="hu">
+<html>
 <head>
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="img/tab_logo.png">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="<?=CSS.'style.css'?>">
+    <link rel="stylesheet" href="<?=CSS.'contact.css'?>">
     <!-- Beállítások telefonos megjelenésekhez -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kapcsolat</title>
+
+    <style>
+
+    </style>
 </head>
 <body class="">
+
 <header>
     <div class="container"></div>
 </header>
 <!-- Loading gif eltüntetése ha betölt az oldal -->
 <!-- A betöltő div -->
 <div id="betolto">
-    <img src="img/loading.gif" alt="Betöltő animáció">
+    <img src="<?=IMG.'loading.gif'?>" alt="Betöltő animáció">
 </div>
 <!-- Navigációs menü -->
 <div class="navbar">
     <!-- Logó -->
     <div class="logo">
-        <a href="index.php"><img src="img/logo.png" alt="Logó"></a>
+        <a href="index.html"><img src="<?=IMG.'logo.png'?>" alt="Logó"></a>
     </div>
+
     <!-- Menüpontok -->
     <div class="menu">
-        <a href="index.php">Főoldal</a>
-        <a href="contact.php" class="activenav">Kapcsolat</a>
-        <?php if(empty($_SESSION['username']) || empty($_SESSION['role'])): ?>
-            <a href="login.php" <?php if(basename(__FILE__) == "login.php"): ?> class="<?php echo "activenav"; ?>"<?php endif;?>>Bejelentkezés</a>
-        <?php else: ?>
-            <a href="user.php"><?php echo $_SESSION['username'];?></a>
-            <a href="app/datacontroller.php?logout=true">Kijelentkezés</a>
-        <?php endif; ?>
+        <a href="index.html">Főoldal</a>
+        <a href="contact.html" class="activenav">Kapcsolat</a>
+        <!-- mindenkepp dinamikus btn legyen -->
+        <a href="login.html">Bejelentkezés</a>
     </div>
-</div>
-<div class="mainimage-container">
-    <img src="img/aboutus.webp" >
-
-    <div class="imageonimage">
-        <div class="hatterkocka">
-            <h1>Kapcsolat</h1>
-            
-        </div>
-    </div>
-    
 </div>
 <br><br>
-<div><h1 class="center">Cégünkről</h1><hr class="custom-hr"></div>
+<div><h1 class="center">Az autókereskedésünkről</h1><hr class="custom-hr"></div>
 <div class="intro-container">
     <p class="intro-text">Üdvözöljük az Autókereskedésünkben! Cégünk a legjobb minőségű új és használt autók értékesítésével foglalkozik. Ügyfeleink elégedettsége és bizalma számunkra az elsődleges fontosságú, és mindent megteszünk annak érdekében, hogy az ügyfeleink elégedettek legyenek. Kínálatunkban megtalálhatók a legnépszerűbb márka és modell autók, és minden autót alaposan átvizsgálunk, hogy biztosítsuk a kiváló minőséget és megbízhatóságot. Csapatunk minden igényét teljesíteni fogja, és szívesen segítünk Önnek megtalálni az álmai autóját. Várjuk Önt szeretettel!</p>
 </div>

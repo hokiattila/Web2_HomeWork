@@ -48,11 +48,11 @@
 <div class="navbar">
     <!-- Logó -->
     <div class="logo">
-        <a href="index.php"><img src="img/logo.png" alt="Logó"></a>
+        <a href="home.php"><img src="img/logo.png" alt="Logó"></a>
     </div>
     <!-- Menüpontok -->
     <div class="menu">
-        <a href="index.php">Főoldal</a>
+        <a href="home.php">Főoldal</a>
         <a href="contact.php">Kapcsolat</a>
         <?php if(empty($_SESSION['username']) || empty($_SESSION['role'])): ?>
             <a href="login.php" <?php if(basename(__FILE__) == "login.php"): ?> class="<?php echo "activenav"; ?>"<?php endif;?>>Bejelentkezés</a>
@@ -77,7 +77,7 @@
 	<div class="form-container">
     <hr class="separator">
 	<br><br><br><br><br><br>
-    <h3 class="center">Még egyetlen autót sem vettél fel a kedvencek közé! Itt az ideje :) Kattints <a href="index.php">ide</a> kínálatunk megtekintéséhez</h3>
+    <h3 class="center">Még egyetlen autót sem vettél fel a kedvencek közé! Itt az ideje :) Kattints <a href="home.php">ide</a> kínálatunk megtekintéséhez</h3>
 	    <hr class="separator">
 	<br><br><br><br><br><br>
 	</div>

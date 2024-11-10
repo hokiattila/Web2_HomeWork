@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="img/tab_logo.png">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href=<?= $viewData['layout_style']?>>
+    <link rel="stylesheet" href="public/css/login.css">
     <!-- Beállítások telefonos megjelenésekhez -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,26 +20,10 @@
 <!-- Loading gif eltüntetése ha betölt az oldal -->
 <!-- A betöltő div -->
 <div id="betolto">
-    <img src="img/loading.gif" alt="Betöltő animáció">
+    <img src="public/img/loading.gif" alt="Betöltő animáció">
 </div>
 <!-- Navigációs menü -->
-<div class="navbar">
-    <!-- Logó -->
-    <div class="logo">
-        <a href="home.php"><img src="img/logo.png" alt="Logó"></a>
-    </div>
-    <!-- Menüpontok -->
-    <div class="menu">
-        <a href="home.php" class="activenav">Főoldal</a>
-        <a href="contact.php">Kapcsolat</a>
-        <?php if(empty($_SESSION['username']) || empty($_SESSION['role'])): ?>
-            <a href="login.php" <?php if(basename(__FILE__) == "login.php"): ?> class="<?php echo "activenav"; ?>"<?php endif;?>>Bejelentkezés</a>
-        <?php else: ?>
-            <a href="user.php"><?php echo $_SESSION['username'];?></a>
-            <a href="app/datacontroller.php?logout=true">Kijelentkezés</a>
-        <?php endif; ?>
-    </div>
-</div>
+<?php echo Menu::getMenu($viewData['selectedItems']); ?>
 </div>
 <br><br><br><br><br><br><br><br>
 <div class="form-container">

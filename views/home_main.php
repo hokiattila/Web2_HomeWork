@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fooldal.css">
-    <link rel="stylesheet" href="css/listazas.css">
+    <link rel="stylesheet" href="<?=$viewData['layout_style']?>">
+    <?php if($viewData['style']): ?>
+        <link rel="stylesheet" href="<?=$viewData['style']?>">
+    <?php endif; ?>
+    <link rel="stylesheet" href="pub/css/listing.css">
     <!-- Beállítások telefonos megjelenésekhez -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <style>
-
     </style>
 </head>
 <body class="">
@@ -25,22 +25,9 @@
     <img src="img/loading.gif" alt="Betöltő animáció">
 </div>
 <!-- Navigációs menü -->
-<div class="navbar">
-    <!-- Logó -->
-    <div class="logo">
-        <a href="index.html"><img src="img/logo.png" alt="Logó"></a>
-    </div>
-
-    <!-- Menüpontok -->
-    <div class="menu">
-        <a href="#" class="activenav">Főoldal</a>
-        <a href="contact.html">Kapcsolat</a>
-        <!-- mindenkepp dinamikus btn legyen -->
-        <a href="login.html">Bejelentkezés</a>
-    </div>
-</div>
+<?php echo Menu::getMenu($viewData['selectedItems']); ?>
 <div class="mainimage-container">
-    <img src="img/carstore.jpg" >
+    <img src="public/img/carstore.jpg" >
 
     <div class="imageonimage">
         <div class="hatterkocka">
@@ -163,7 +150,7 @@
 
         <li class="list-item">
 
-            <a href="car.html"><img class="list-itemkep" src="img/cars/cla/cla1.jpg" alt="Kép 3"></a>
+            <a href="car.html"><img class="list-itemkep" src="public/img/cars/cla/cla1.jpg" alt="Kép 3"></a>
             <div class="list-item-content">
                 <div class="cimpluszkedvenc"><a href="car.html" ><h3>Mercedes-Benz CLA-180</h3> <!-- brand + modell típus --></a><div class="star"><img src="img/star_empty.png" alt="Kedvencekhez adás"></div></div>
                 <p><i class="tag1">2016</i>&nbsp&nbsp<i class="tag1">4 ajtós</i>&nbsp&nbsp<i class="tag1">Fekete</i></p>
@@ -180,7 +167,7 @@
         <a href="car.html">
             <li class="list-item">
 
-                <a href="car.html"><img class="list-itemkep" src="img/cars/cla/cla2.webp" alt="Kép 3"></a>
+                <a href="car.html"><img class="list-itemkep" src="public/img/cars/cla/cla2.webp" alt="Kép 3"></a>
                 <div class="list-item-content">
                     <div class="cimpluszkedvenc"><a href="car.html" ><h3>Mercedes-Benz CLA-180</h3> <!-- brand + modell típus --></a><div class="star"><img src="img/star_empty.png" alt="Kedvencekhez adás"></div></div>
                     <p><i class="tag1">2016</i>&nbsp&nbsp<i class="tag1">4 ajtós</i>&nbsp&nbsp<i class="tag1">Fekete</i></p>
@@ -196,7 +183,7 @@
             <hr class="separator2">
             <li class="list-item">
 
-                <a href="car.html"><img class="list-itemkep" src="img/cars/cla/cla4.webp" alt="Kép 3"></a>
+                <a href="car.html"><img class="list-itemkep" src="public/img/cars/cla/cla4.webp" alt="Kép 3"></a>
                 <div class="list-item-content">
                     <div class="cimpluszkedvenc"><a href="car.html" ><h3>Mercedes-Benz CLA-180</h3> <!-- brand + modell típus --></a><div class="star"><img src="img/star_empty.png" alt="Kedvencekhez adás"></div></div>
                     <p><i class="tag1">2016</i>&nbsp&nbsp<i class="tag1">4 ajtós</i>&nbsp&nbsp<i class="tag1">Fekete</i></p>

@@ -1,18 +1,16 @@
-
 <!DOCTYPE HTML>
-<html>
+<html lang="hu">
 <head>
+    <title></title>
     <meta charset="utf-8">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="<?=CSS.'style.css'?>">
-    <link rel="stylesheet" href="<?=CSS.'contact.css'?>">
+    <link rel="stylesheet" href="<?=$viewData['layout_style']?>">
+    <?php if($viewData['style']): ?>
+    <link rel="stylesheet" href="<?=$viewData['style']?>">
+    <?php endif; ?>
     <!-- Beállítások telefonos megjelenésekhez -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <style>
-
-    </style>
 </head>
 <body class="">
 
@@ -25,20 +23,7 @@
     <img src="<?=IMG.'loading.gif'?>" alt="Betöltő animáció">
 </div>
 <!-- Navigációs menü -->
-<div class="navbar">
-    <!-- Logó -->
-    <div class="logo">
-        <a href="index.html"><img src="<?=IMG.'logo.png'?>" alt="Logó"></a>
-    </div>
-
-    <!-- Menüpontok -->
-    <div class="menu">
-        <a href="index.html">Főoldal</a>
-        <a href="contact.html" class="activenav">Kapcsolat</a>
-        <!-- mindenkepp dinamikus btn legyen -->
-        <a href="login.html">Bejelentkezés</a>
-    </div>
-</div>
+<?php echo Menu::getMenu($viewData['selectedItems']); ?>
 <br><br>
 <div><h1 class="center">Az autókereskedésünkről</h1><hr class="custom-hr"></div>
 <div class="intro-container">

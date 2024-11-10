@@ -4,7 +4,7 @@ define('DATABASE', 'ottakocsid');
 define('USER', 'root');
 define('PORT', '3306');
 define('PASSWORD', '');
-class Database {
+class  Database {
     private static bool|PDO $connection = FALSE;
     public static function getConnection(bool $nodb = false): PDO {
         if (!self::$connection) {

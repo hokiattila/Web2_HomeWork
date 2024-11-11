@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <title>Ott a kocsid! - Főoldal</title>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="<?=$viewData['layout_style']?>">
     <?php if($viewData['style']): ?>

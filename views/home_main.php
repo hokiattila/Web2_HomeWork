@@ -3,13 +3,14 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <?php var_dump($viewData['error']); ?>
     <title>Ott a kocsid! - Főoldal</title>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="<?=$viewData['layout_style']?>">
     <?php if($viewData['style']): ?>
         <link rel="stylesheet" href="<?=$viewData['style']?>">
     <?php endif; ?>
-    <link rel="stylesheet" href="pub/css/listing.css">
+    <link rel="stylesheet" href="public/css/listing.css">
     <!-- Beállítások telefonos megjelenésekhez -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -319,6 +320,7 @@
         }
     }
 </script>
+<script>history.pushState({}, '', 'home');</script>
 <footer>
     <p>&copy; 2024 Ott a kocsid! kft. Minden jog fenntartva.</p>
     <p class="contact">Kapcsolat: support@ottakocsid.hu | Telefon: +36 1 234 5678</p>

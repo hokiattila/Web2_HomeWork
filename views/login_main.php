@@ -11,7 +11,6 @@
     <!-- Beállítások telefonos megjelenésekhez -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <style>
 
     </style>
@@ -24,13 +23,13 @@
 <!-- Loading gif eltüntetése ha betölt az oldal -->
 <!-- A betöltő div -->
 <div id="betolto">
-    <img src="img/loading.gif" alt="Betöltő animáció">
+    <img src="public/img/loading.gif" alt="Betöltő animáció">
 </div>
 <?php echo Menu::getMenu($viewData['selectedItems']); ?>
 <br><br><br><br><br>
 <div class="form-container">
     <h2>Bejelentkezés</h2>
-    <form action="/login" method="post">
+    <form action="post" method="post">
         <input type="text" name="username" placeholder="Felhasználónév" required><br>
         <input type="password" name="password" placeholder="Jelszó" required><br>
         <input type="submit" value="Bejelentkezés">

@@ -3,7 +3,7 @@
 <html lang="hu">
 <head>
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="img/tab_logo.png">
+    <link rel="icon" type="image/png" href="public/img/tab_logo.png">
     <!-- Stylesheet -->
     <link rel="stylesheet" href=<?= $viewData['layout_style']?>>
     <link rel="stylesheet" href="public/css/login.css">

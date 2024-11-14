@@ -13,10 +13,10 @@ class Menu {
     }
 
     public static function getMenu($sItems) : string {
-        $menu = "<div class=\"navbar\">" . "<div class=\"logo\"><a href=\"home\"><img src=\"" . IMG."logo.png\"" . " alt=\"Logó\"></a></div>";
+        $menu = "<div class=\"navbar\">" . "<div class=\"logo\"><a href=\"home\"><img src=\"" ."/ottakocsid/".IMG."logo.png\"" . " alt=\"Logó\"></a></div>";
         $menu .= "<div class =\"menu\">";
         foreach(self::$menu as $menuindex => $menuitem) {
-                $menu.= "<a href='".$menuindex."' ".($menuindex==$sItems[0]? "class='activenav'":"").">".$menuitem[0]."</a>";
+                $menu.= "<a href='/ottakocsid/".$menuindex."' ".($menuindex==$sItems[0]? "class='activenav'":"").">".$menuitem[0]."</a>";
         }
         $menu .= "</div></div>";
         return $menu;

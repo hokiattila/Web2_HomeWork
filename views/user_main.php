@@ -55,7 +55,7 @@
         <a href="home.php">Főoldal</a>
         <a href="contact.php">Kapcsolat</a>
         <?php if(empty($_SESSION['username']) || empty($_SESSION['role'])): ?>
-            <a href="login.php" <?php if(basename(__FILE__) == "login.php"): ?> class="<?php echo "activenav"; ?>"<?php endif;?>>Bejelentkezés</a>
+            <a href="login.php" <?php if(basename(__FILE__) == "postlogin.php"): ?> class="<?php echo "activenav"; ?>"<?php endif;?>>Bejelentkezés</a>
         <?php else: ?>
             <a href="user.php" <?php if(basename(__FILE__) == "user.php"): ?> class="<?php echo "activenav"; ?>"<?php endif;?>><?php echo $_SESSION['username'];?></a>
             <a href="app/datacontroller.php?logout=true">Kijelentkezés</a>

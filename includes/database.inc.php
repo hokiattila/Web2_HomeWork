@@ -4,7 +4,7 @@ define('DATABASE', 'ottakocsid');
 define('USER', 'root');
 define('PORT', '3306');
 define('PASSWORD', '');
-class  Database {
+class Database {
     private static bool|PDO $connection = FALSE;
     public static function getConnection(bool $nodb = false): PDO {
         if (!self::$connection) {
@@ -32,7 +32,7 @@ class  Database {
                     "CREATE TABLE IF NOT EXISTS users(
                 username VARCHAR(50) PRIMARY KEY,
                 hashed_psw VARCHAR(256) NOT NULL,
-                role ENUM('admin','user') NOT NULL,
+                permission varchar(3) NOT NULL default '_1_',                
                 first_name VARCHAR(50) NOT NULL,
                 last_name VARCHAR(50) NOT NULL,
                 birth_date DATE NOT NULL,
@@ -88,7 +88,7 @@ class  Database {
 
                 $stmt = $conn->prepare("INSERT INTO users VALUES (?,?,?,?,?,?,?,?,?,?)");
                 $stmt->execute([
-                    "admin", password_hash("adminjelszo", PASSWORD_DEFAULT), "admin",
+                    "admin", password_hash("adminjelszo", PASSWORD_DEFAULT), "__1",
                     "Admin", "Admin", date('Y-m-d'), "Férfi", date('Y-m-d'),
                     "1", "admin@carsales.com"
                 ]);

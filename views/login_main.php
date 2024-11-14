@@ -1,19 +1,20 @@
-
 <!DOCTYPE HTML>
-<html>
+<html lang="hu">
 <head>
     <meta charset="utf-8">
     <!-- Stylesheet -->
+    <link rel="icon" type="public/image/png" href="public/img/tab_logo.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="<?=$viewData['layout_style']?>">
-    <?php if($viewData['style']): ?>
-        <link rel="stylesheet" href="<?=$viewData['style']?>">
-    <?php endif; ?>
+    <link rel="stylesheet" href="<?=$viewData['style']?>">
+    <link rel="stylesheet" href="<?=$viewData['toastr_style']?>">
+    <!-- JS -->
+    <script src="public/js/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Beállítások telefonos megjelenésekhez -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-
-    </style>
+    <title>Bejelentkezés</title>
 </head>
 <body class="">
 
@@ -22,23 +23,21 @@
 </header>
 <!-- Loading gif eltüntetése ha betölt az oldal -->
 <!-- A betöltő div -->
-<div id="betolto">
-    <img src="public/img/loading.gif" alt="Betöltő animáció">
-</div>
 <?php echo Menu::getMenu($viewData['selectedItems']); ?>
 <br><br><br><br><br>
 <div class="form-container">
     <h2>Bejelentkezés</h2>
-    <form action="post" method="post">
+    <form action="login" method="post">
+        <input type="hidden" name="token" value="<?= $viewData['token'] ?>">
         <input type="text" name="username" placeholder="Felhasználónév" required><br>
         <input type="password" name="password" placeholder="Jelszó" required><br>
-        <input type="submit" value="Bejelentkezés">
+        <input type="submit" value="Bejelentkezés" name="login-btn">
     </form>
     <br><br><br>
     <hr class="separator">
     <br>
     <p>Nincs még fiókod?<br><br>
-        <a href="register.html"><button class="search-button">Regisztrálj az oldalunkra!</button></a></p>
+        <a href="register.php"><button class="search-button">Regisztrálj az oldalunkra!</button></a></p>
 </div>
 
 <br><br><br><br><br>
@@ -69,6 +68,28 @@
 
     productImages.forEach(image => image.addEventListener("click", changeImage));
     navItem.addEventListener('click', toggleNavigation);
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (isset($_SESSION['register-success'])) { ?>
+        toastr.options.positionClass = "toast-top-left";
+        toastr.success("Sikeres regisztráció");
+        <?php unset($_SESSION['register-success']);?>
+        <?php } ?>
+    });
+</script>
+<?php if(isset($viewData['error'])): ?>
+<div id="error-message" style="display:none;" data-message="<?= htmlspecialchars($viewData['error']); ?>"></div>
+<?php endif; ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var errorMessageDiv = document.getElementById('error-message');
+        var message = errorMessageDiv.getAttribute('data-message');
+        if (message) {
+            toastr.options.positionClass ="toast-top-left";
+            toastr.error(message);
+        }
+    });
 </script>
 <footer>
     <p>&copy; 2024 Ott a kocsid! kft. Minden jog fenntartva.</p>

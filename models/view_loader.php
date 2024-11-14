@@ -6,6 +6,7 @@ class View_Loader
     private ?string $render = null;
     private ?array $selectedItems = null;
     private ?string $layout_style = null;
+    private ?string $toastr_style = null;
     private ?string $style = null;
     private ?string $script = null;
 
@@ -26,6 +27,11 @@ class View_Loader
         $defaultLayout = CSS . 'style.css';
         if(file_exists(SERVER_ROOT . $defaultLayout)) {
             $this->layout_style = $defaultLayout;
+        }
+
+        $defaultLayout = CSS . 'toastr.css';
+        if(file_exists(SERVER_ROOT . $defaultLayout)) {
+            $this->toastr_style = $defaultLayout;
         }
 
         // CSS fájl ellenőrzése relatív útvonallal
@@ -51,6 +57,7 @@ class View_Loader
         $this->data['render'] = $this->render;
         $this->data['selectedItems'] = $this->selectedItems;
         $this->data['layout_style'] = $this->layout_style;
+        $this->data['toastr_style'] = $this->toastr_style;
         $this->data['style'] = $this->style;
         $this->data['script'] = $this->script;
 

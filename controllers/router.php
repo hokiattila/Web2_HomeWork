@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['userid'])) $_SESSION['userid'] = 0;
+if (!isset($_SESSION['username'])) $_SESSION['username'] = "unknown";
 if (!isset($_SESSION['userfirstname'])) $_SESSION['userfirstname'] = "";
 if (!isset($_SESSION['userlastname'])) $_SESSION['userlastname'] = "";
 if (!isset($_SESSION['userlevel'])) $_SESSION['userlevel'] = "1__";

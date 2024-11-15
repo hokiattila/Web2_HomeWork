@@ -3,10 +3,10 @@
 <html lang="hu">
 <head>
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="public/img/tab_logo.png">
+    <link rel="icon" type="image/png" href="/ottakocsid/public/img/tab_logo.png">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href=<?= $viewData['layout_style']?>>
-    <link rel="stylesheet" href="public/css/login.css">
+    <link rel="stylesheet" href=<?= '/ottakocsid/'.$viewData['layout_style']?>>
+    <link rel="stylesheet" href="/ottakocsid/public/css/login.css">
     <!-- Beállítások telefonos megjelenésekhez -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
 <!-- Loading gif eltüntetése ha betölt az oldal -->
 <!-- A betöltő div -->
 <div id="betolto">
-    <img src="public/img/loading.gif" alt="Betöltő animáció">
+    <img src="/ottakocsid/public/img/loading.gif" alt="Betöltő animáció">
 </div>
 <!-- Navigációs menü -->
 <?php echo Menu::getMenu($viewData['selectedItems']); ?>
@@ -28,13 +28,13 @@
 <br><br><br><br><br><br><br><br>
 <div class="form-container">
     <h1>Hiba!</h1><h2><br>Nem létező hivatkozásra kattintottál!</h2>
-    <p>Pár másodpercen belül automatikusan visszairányítunk a <a href="index.html"></a>főoldalra.</p>
-    <button class="search-button2" onclick="window.location.href = 'index.php';">Kattints ide hogy visszatérj a főoldalra</button>
+    <p>Pár másodpercen belül automatikusan visszairányítunk a <a href="/ottakocsid/home"></a>főoldalra.</p>
+    <button class="search-button2" onclick="window.location.href = '/ottakocsid/home';">Kattints ide hogy visszatérj a főoldalra</button>
 </div>
 <br><br><br><br><br><br><br><br>
 <script>
     setTimeout(function() {
-        window.location.href = "index.php";
+        window.location.href = "/ottakocsid/home";
     }, 5000); // 5 másodperc után visszairányítás az index.html-re
 </script>
 

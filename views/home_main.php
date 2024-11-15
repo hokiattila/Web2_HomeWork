@@ -1,10 +1,13 @@
+<?php
+use models\Car_Model;
+$model = new Car_Model();
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Ott a kocsid! - Főoldal</title>
     <link rel="icon" type="image/png" href="/ottakocsid/public/img/tab_logo.png">
-    <?php echo $viewData['current']?>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="<?='/ottakocsid/'. $viewData['layout_style']?>">
     <link rel="stylesheet" href="<?='/ottakocsid/'. $viewData['style']?>">
@@ -18,6 +21,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<body>
 <!-- Loading gif eltüntetése ha betölt az oldal -->
 <!-- A betöltő div -->
 <div id="betolto">
@@ -67,133 +71,53 @@
 <!-- Kategória kiválasztás a kereséshez -->
 <div><h1 class="center">Találd meg a számodra megfelelő autót!</h1><hr class="custom-hr"></div>
 <div>
-    <div class="centercontainer" id="filters">
-        <form>
-            <div class="input-container">
-                <div class="dropdown">
-                    <button onclick="ClickedOnButton1('dropdownMarka')" class="dropbtn" type="button">Márka</button>
-                    <div id="dropdownMarka" class="dropdown-content">
-                        <input type="text" placeholder="Keresés.." id="inputMarka" onkeyup="filterFunction('inputMarka','dropdownMarka')">
-                        <a href="#mercedes-benz">Mercedes-Benz</a>
-                        <a href="#audi">Audi</a>
-                        <a href="#ford">Ford</a>
-                        <a href="#bmw">BMW</a>
-                        <a href="#peugeot">Peugeot</a>
-                        <a href="#suzuki">Suzuki</a>
-                        <a href="#toyota">Toyota</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button onclick="ClickedOnButton1('dropdownTipus')" class="dropbtn" type="button">Modell</button>
-                    <div id="dropdownTipus" class="dropdown-content">
-                        <input type="text" placeholder="Keresés..." id="inputTipus" onkeyup="filterFunction('inputTipus','dropdownTipus')">
-                        <a href="#cclass">C osztály</a>
-                        <a href="#cla">cla</a>
-                        <a href="#sclass">S osztály</a>
-                        <a href="#eqb">EQB</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button onclick="ClickedOnButton1('dropdownAllapot')" class="dropbtn" type="button">Állapot</button>
-                    <div id="dropdownAllapot" class="dropdown-content">
-                        <input type="text" placeholder="Keresés..." id="inputAllapot" onkeyup="filterFunction('inputAllapot','dropdownAllapot')">
-                        <a href="#uj">Új</a>
-                        <a href="#ujszeru">Újszerű</a>
-                        <a href="#viseletes">Viseletes</a>
-                        <a href="#totalkar">Totálkár</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button onclick="ClickedOnButton1('dropdownUzemanyag')" class="dropbtn" type="button">Üzemanyag</button>
-                    <div id="dropdownUzemanyag" class="dropdown-content">
-                        <input type="text" placeholder="Keresés..." id="inputUzemanyag" onkeyup="filterFunction('inputUzemanyag','dropdownUzemanyag')">
-                        <a href="#benzin">Benzin</a>
-                        <a href="#dizel">Dízel</a>
-                        <a href="#gaz">Gáz</a>
-                        <a href="#hidrogen">Hidrogén</a>
-                        <a href="#elektromos">Elektromos</a>
-                    </div>
-                </div>
-
-                <input type="text" placeholder="Kezdő ár">
-                <input type="text" placeholder="Vég ár">
-            </div>
-            <div align="right">
-                <button class="search-button" type="submit">Szűrés</button></div>
-        </form>
-    </div>
+    <div class="centercontainer" >
+        <hr>
+        <ul class="list">
+            <?php foreach ($viewData['cars'] as $car): ?>
+            <?php $files = $model->fetchImages($car["VIN"])?>
+            <li class="list-item">
+                <a href="/ottakocsid/car/<?=$car["VIN"] ?>"><img class="list-itemkep" src="/ottakocsid/public/img/cars/<?=$car["VIN"]?>/<?=$files[0]?>" alt="Kép 3"></a>
+                <div class="list-item-content">
+                    <div class="cimpluszkedvenc"><a href="/ottakocsid/car/<?=$car["VIN"] ?>" ><h3><?= $car["brand"]." ".$car["modell"]?></h3></a>
+                        <?php if($_SESSION['username'] == "unknown"  || $_SESSION['userlevel'] == "__1"): ?>
+                        <div class="star"><img src="" alt=""></div></div>
+                    <?php endif; ?>
+                    <?php if($viewData['favorite_cars'] !== false && ($_SESSION['username'] != "unknown") && isset($_SESSION['userlevel']) && $_SESSION['userlevel'] == "_1_"): ?>
+                    <?php
+                    $isFavorite = false;
+                    foreach ($viewData['favorite_cars'] as $favcar) {
+                        if($favcar['VIN'] == $car['VIN']) $isFavorite = true;
+                    }
+                    ?>
+                    <?php if(!$isFavorite): ?>
+                    <div class="star"><a href="app/datacontroller.php?VIN=<?= $car['VIN']?>&favorite=add&target=index"><img src="img/star_empty.png" alt="Kedvencekhez adás"></a></div></div>
+                <?php else: ?>
+                <div class="deletestar"><a href="app/datacontroller.php?VIN=<?= $car['VIN']?>&favorite=remove&target=index"><img src="img/star_full.png" alt="Kedvenc eltávolítása"></a></div></div>
+    <?php endif; ?>
+    <?php endif;?>
+    <p><i class="tag1"><?=$car["build_year"]?></i>&nbsp&nbsp<i class="tag1"><?= $car["door_count"]." ajtós"?></i>&nbsp&nbsp<i class="tag1"><?= $car["color"]?></i></p>
+    <p><i class="tag2"><?= $car["power"]." LE"?></i>&nbsp&nbsp<i class="tag2"><?=$car["fuel_type"]?></i></p>
+    <p><i class="tag3"><?= $car["con"] ?></i></p>
+    <p>Alvázszám: <?=$car['VIN'] ?></p>
+    <hr>
+    <p><b>Ár: <?php echo $car["price"]; ?> Ft</b></p>
+</div>
+</li>
+<hr class="separator2">
+<?php endforeach; ?>
+<div class="page-info">
+    Showing <?php echo $viewData['current']; ?> of <?php echo $viewData['page'] ?>
 </div>
 
-<div class="centercontainer" >
-    <hr>
-    <ul class="list">
-        <!-- listaelemeket php-val megjeleníteni dinamikusan a dobott találatok alapján -->
-
-        <li class="list-item">
-
-            <a href="car.html"><img class="list-itemkep" src="/ottakocsid/public/img/cars/cla/cla1.jpg" alt="Kép 3"></a>
-            <div class="list-item-content">
-                <div class="cimpluszkedvenc"><a href="car.html" ><h3>Mercedes-Benz CLA-180</h3> <!-- brand + modell típus --></a><div class="star"><img src="ottakocsid/img/star_empty.png" alt="Kedvencekhez adás"></div></div>
-                <p><i class="tag1">2016</i>&nbsp&nbsp<i class="tag1">4 ajtós</i>&nbsp&nbsp<i class="tag1">Fekete</i></p>
-                <p><i class="tag2">180 LE</i>&nbsp&nbsp<i class="tag2">Benzin</i></p>
-                <p><i class="tag3">Újszerű</i></p>
-
-                <p>Rövid leírás 3.</p>
-                <hr>
-                <p><b>Ár: 13,000,000 Ft</b></p>
-            </div>
-
-        </li>
-        <hr class="separator2">
-        <a href="car.html">
-            <li class="list-item">
-
-                <a href="car.html"><img class="list-itemkep" src="/ottakocsid/public/img/cars/cla/cla2.webp" alt="Kép 3"></a>
-                <div class="list-item-content">
-                    <div class="cimpluszkedvenc"><a href="car.html" ><h3>Mercedes-Benz CLA-180</h3> <!-- brand + modell típus --></a><div class="star"><img src="/ottakocsid/public/img/star_empty.png" alt="Kedvencekhez adás"></div></div>
-                    <p><i class="tag1">2016</i>&nbsp&nbsp<i class="tag1">4 ajtós</i>&nbsp&nbsp<i class="tag1">Fekete</i></p>
-                    <p><i class="tag2">180 LE</i>&nbsp&nbsp<i class="tag2">Benzin</i></p>
-                    <p><i class="tag3">Újszerű</i></p>
-
-                    <p>Rövid leírás 3.</p>
-                    <hr>
-                    <p><b>Ár: 13,000,000 Ft</b></p>
-                </div>
-
-            </li>
-            <hr class="separator2">
-            <li class="list-item">
-
-                <a href="car.html"><img class="list-itemkep" src="/ottakocsid/public/img/cars/cla/cla4.webp" alt="Kép 3"></a>
-                <div class="list-item-content">
-                    <div class="cimpluszkedvenc"><a href="car.html" ><h3>Mercedes-Benz CLA-180</h3> <!-- brand + modell típus --></a><div class="star"><img src="/ottakocsid/public/img/star_empty.png" alt="Kedvencekhez adás"></div></div>
-                    <p><i class="tag1">2016</i>&nbsp&nbsp<i class="tag1">4 ajtós</i>&nbsp&nbsp<i class="tag1">Fekete</i></p>
-                    <p><i class="tag2">180 LE</i>&nbsp&nbsp<i class="tag2">Benzin</i></p>
-                    <p><i class="tag3">Újszerű</i></p>
-
-                    <p>Rövid leírás 3.</p>
-                    <hr>
-                    <p><b>Ár: 13,000,000 Ft</b></p>
-                </div>
-
-            </li>
-            <hr>
-            <!-- Majd itt jöhet a matek, a lényeg a design -->
-            <div class="pagination">
-                <button >Előző</button>
-                <button><a href="home/4">teszt</a></button>
-                <button >2</button>
-                <button >3</button>
-                <button >4</button>
-                <button >5</button>
-                <button >6</button>
-                <button >7</button>
-                <button >8</button>
-                <button >9</button>
-                <button >10</button>
-                <button >Következő</button>
-            </div>
-    </ul>
+<div class="pagination">
+    <a href="/ottakocsid/home" style="margin-right: 5px">Első oldal</a>
+    <div class="page-numbers">
+        <?php for($i = 1; $i<=$viewData['page']; $i++): ?>
+            <a href="/ottakocsid/home/<?php echo $i;?>"><?php echo $i; ?></a>
+        <?php endfor;?>
+    </div>
+    <a href="/ottakocsid/home/<?php echo $viewData['page'] ?>" style="margin-left: 5px">Utolsó oldal</a>
 </div>
 <!-- Ha lesz elég content ez majd törlendő! -->
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>

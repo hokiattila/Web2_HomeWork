@@ -83,6 +83,22 @@ class Car_Model {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function fetchImages($VIN)  {
+        $directory = $_SERVER["DOCUMENT_ROOT"]."/ottakocsid/public/img/cars/".$VIN;
+        $allowed_types = array('jpg','jpeg','png','gif', 'webp');
+        $files = array();
+        $dir_handle = @opendir($directory) or die("Hiba történt a könyvtár megnyitásakor!");
+        while ($file = readdir($dir_handle)) {
+            $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+            if (in_array($extension, $allowed_types)) {
+                $files[] = $file;
+            }
+        }
+        closedir($dir_handle);
+        return $files;
+    }
+
+
     public function insertCar($vin, $brand, $modell, $build_year, $door_count, $color, $weight, $power, $con, $fuel_type, $price) : void {
         $pdo = Database::getConnection();
         $date = new DateTime($build_year);

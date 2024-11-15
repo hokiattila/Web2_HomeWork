@@ -15,7 +15,7 @@ class Home_Controller {
         $this->cars = array();
         $this->favorite_cars = $this->model->fetchFavoriteCarData($_SESSION['username']);
         $this->limit = 3;
-        $this->pages = $this->model->getCarRowCount();
+        $this->pages = ceil($this->model->getCarRowCount() / $this->limit);
         $this->brands = $this->model-> fetchBrandNames();
     }
 
@@ -34,7 +34,7 @@ class Home_Controller {
 
         $view = new View_Loader($this->baseName.'_main');
         $view->assign("current", $current);
-        $view->assign("page", $page);
+        $view->assign("page", $this->pages);
         $view->assign("start", $start);
         $view->assign("cars", $this->cars);
         $view->assign("brands", $this->brands);

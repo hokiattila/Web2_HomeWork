@@ -2,6 +2,8 @@
 
 use models\Login_Model;
 include(SERVER_ROOT.'models/Login_Model.php');
+include(SERVER_ROOT.'includes/token.inc.php');
+include(SERVER_ROOT.'includes/error.inc.php');
 
 class Login_Controller
 {
@@ -22,25 +24,6 @@ class Login_Controller
         "nouserlogin" => "A folytatáshoz jelenkezzen be"
     );
 
-    public function generateToken() : string {
-        try {
-            $token = bin2hex(random_bytes(32));
-            $_SESSION['token'] = $token;
-            return $token;
-        } catch (Exception $e) {
-            error_log('Hiba a token generálásakor: ' . $e->getMessage());
-            return 'Hiba történt a token generálásakor.';
-        } catch (Error $e) {
-            error_log('Rendszerhiba a token generálásakor: ' . $e->getMessage());
-            return 'Rendszerhiba történt a token generálásakor.';
-        }
-    }
-
-    public function raiseError(string $error) : void {
-        $view = new View_Loader($this->baseName.'_main');
-        $view->assign("error", $error);
-        $view->assign("token", $this->generateToken());
-    }
 
     public function main(array $vars): void
     {
@@ -49,8 +32,8 @@ class Login_Controller
             $username_input = $vars['username'];
             $password_input = $vars['password'];
 
-            if($token != $_SESSION['token']) $this->raiseError("Sikertelen token validálás");
-            else if(empty($username_input) || empty($password_input)) $this->raiseError("Hiányzó felhasználónév vagy jelszó");
+            if($token != $_SESSION['token']) Raise_Error::raiseError($this,"Sikertelen token validálás");
+            else if(empty($username_input) || empty($password_input)) Raise_Error::raiseError($this,"Hiányzó felhasználónév vagy jelszó");
             else {
                 $res = $this->model->fetchUserData($username_input, $password_input);
                 if(!empty($res) && $res[0]['username'] == $username_input && password_verify($password_input, $res[0]['hashed_psw'])) {
@@ -59,15 +42,15 @@ class Login_Controller
                 $_SESSION['userlastname'] = $res[0]['last_name'];
                 $_SESSION['userlevel'] = $res[0]['permission'];
                 $_SESSION['login-try'] = "success";
-                header("Location: home");
+                header("Location: /ottakocsid/home");
                 exit;
                 } else {
-                    $this->raiseError("Hibás felhasználónév vagy jelszó");
+                    Raise_Error::raiseError($this,"Hibás felhasználónév vagy jelszó");
                 }
             }
         } else {
             $view = new View_Loader($this->baseName .'_main');
-            $view->assign("token", $this->generateToken());
+            $view->assign("token", Token::generateToken());
         }
     }
 }

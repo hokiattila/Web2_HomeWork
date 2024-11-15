@@ -10,6 +10,6 @@ class Logout_Controller
         $_SESSION['userlastname'] = "";
         $_SESSION['userlevel'] = "1__";
         $_SESSION['logged-out'] = true;
-        header("Location: home");
+        header("Location: /ottakocsid/home");
     }
 }

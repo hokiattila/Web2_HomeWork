@@ -90,8 +90,15 @@ class Database {
                 $stmt->execute([
                     "admin", password_hash("adminjelszo", PASSWORD_DEFAULT), "__1",
                     "Admin", "Admin", date('Y-m-d'), "Férfi", date('Y-m-d'),
-                    "1", "admin@carsales.com"
+                    "2", "admin@carsales.com"
                 ]);
+
+                $stmt->execute([
+                    "test", password_hash("test", PASSWORD_DEFAULT), "_1_",
+                    "Teszt", "Felhasználó", date('Y-m-d'), "Férfi", date('Y-m-d'),
+                    "1", "test@carsales.com"
+                ]);
+
 
                 $stmt = $conn->prepare("INSERT INTO cars(brand, modell, build_year, door_count, color, weight, power, con, fuel_type, price, VIN) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
                 $stmt->execute(["Peugeot", "206", date('Y-m-d', strtotime('2004-05-22')), 5, "fehér", 1, 110, "Újszerű", "Benzin", 400000, "SADJN3331JNCDS"]);
@@ -102,7 +109,9 @@ class Database {
 
                 $stmt = $conn->prepare("INSERT INTO pages(url, page, permission, sortingorder) VALUES (?,?,?,?)");
                 $stmt->execute(["home","Főoldal", "111", 10]);
+                $stmt->execute(["favorites", "Kedvencek", "010", 15]);
                 $stmt->execute(["contact","Kapcsolat", "111", 20]);
+                $stmt->execute(["addcar", "Új hirdetés", "001", 25]);
                 $stmt->execute(["admin","Admin","001", 30]);
                 $stmt->execute(["login","Bejelentkezés", "100", 40]);
                 $stmt->execute(["logout","Kilépés", "011", 50]);

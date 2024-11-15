@@ -91,9 +91,9 @@ $model = new Car_Model();
                     }
                     ?>
                     <?php if(!$isFavorite): ?>
-                    <div class="star"><a href="app/datacontroller.php?VIN=<?= $car['VIN']?>&favorite=add&target=index"><img src="img/star_empty.png" alt="Kedvencekhez adás"></a></div></div>
+                    <div class="star"><a href="/ottakocsid/car/fav/<?= $car['VIN']?>"><img src="/ottakocsid/public/img/star_empty.png" alt="Kedvencekhez adás"></a></div></div>
                 <?php else: ?>
-                <div class="deletestar"><a href="app/datacontroller.php?VIN=<?= $car['VIN']?>&favorite=remove&target=index"><img src="img/star_full.png" alt="Kedvenc eltávolítása"></a></div></div>
+                <div class="deletestar"><a href="/ottakocsid/car/fav/<?= $car['VIN']?>"><img src="/ottakocsid/public/img/star_full.png" alt="Kedvenc eltávolítása"></a></div></div>
     <?php endif; ?>
     <?php endif;?>
     <p><i class="tag1"><?=$car["build_year"]?></i>&nbsp&nbsp<i class="tag1"><?= $car["door_count"]." ajtós"?></i>&nbsp&nbsp<i class="tag1"><?= $car["color"]?></i></p>

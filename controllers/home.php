@@ -2,7 +2,7 @@
 use models\Car_Model;
 include(SERVER_ROOT.'models/Car_Model.php');
 class Home_Controller {
-    public string $baseName = 'home';
+    public string $baseName;
     public Car_Model $model;
     public int $pages;
     public int $limit;
@@ -11,6 +11,7 @@ class Home_Controller {
     public array $favorite_cars;
 
     public function __construct() {
+        $this->baseName = 'home';
         $this->model = new Car_Model();
         $this->cars = array();
         $this->favorite_cars = $this->model->fetchFavoriteCarData($_SESSION['username']);

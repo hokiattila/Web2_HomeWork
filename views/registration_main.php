@@ -83,7 +83,7 @@
     productImages.forEach(image => image.addEventListener("click", changeImage));
     navItem.addEventListener('click', toggleNavigation);
 </script>
-<?php if($viewData['error']): ?>
+<?php if(!empty($viewData['error'])): ?>
 <div id="error-message" style="display:none;" data-message="<?= htmlspecialchars($viewData['error']); ?>"></div>
 <?php endif; ?>
 <script>

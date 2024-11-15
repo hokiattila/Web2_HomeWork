@@ -41,8 +41,22 @@
 </div>
 
 <br><br><br><br><br>
-
-
+<?php if(isset($_SESSION['reg-try'])): ?>
+    <div id="reg-try" style="display:none;" data-message="Sikeres regisztráció! Mostmár beléphetsz."></div>
+<?php endif; ?>
+<?php if(isset($_SESSION['reg-try'])): ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var errorMessageDiv = document.getElementById('reg-try');
+        var message = errorMessageDiv.getAttribute('data-message');
+        if (message) {
+            toastr.options.positionClass ="toast-top-left";
+            toastr.success(message);
+        }
+        <?php unset($_SESSION['reg-try']) ?>
+    });
+</script>
+<?php endif; ?>
 <script>
     window.addEventListener('load', function() {
         var betoltoDiv = document.getElementById('betolto');

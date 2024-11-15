@@ -130,6 +130,10 @@ $model = new Car_Model();
 <div id="logged-out" style="display:none;" data-message="Sikeresen kijelentkeztél, várunk vissza!"></div>
 <?php endif; ?>
 
+<?php if(isset($_SESSION['car-insert'])): ?>
+<div id="car-insert" style="display:none;" data-message="A hirdetést sikeresen feltöltöttük!"></div>
+<?php endif; ?>
+
 <script>
     window.addEventListener('load', function() {
         var betoltoDiv = document.getElementById('betolto');
@@ -241,6 +245,19 @@ $model = new Car_Model();
             toastr.success(message);
         }
         <?php unset($_SESSION['login-try']) ?>
+    });
+</script>
+<?php endif; ?>
+<?php if(isset($_SESSION['car-insert'])): ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var errorMessageDiv = document.getElementById('car-insert');
+        var message = errorMessageDiv.getAttribute('data-message');
+        if (message) {
+            toastr.options.positionClass ="toast-top-left";
+            toastr.success(message);
+        }
+        <?php unset($_SESSION['car-insert']) ?>
     });
 </script>
 <?php endif; ?>

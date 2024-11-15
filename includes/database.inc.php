@@ -88,7 +88,7 @@ class Database {
 
                 $stmt = $conn->prepare("INSERT INTO users VALUES (?,?,?,?,?,?,?,?,?,?)");
                 $stmt->execute([
-                    "admin", password_hash("adminjelszo", PASSWORD_DEFAULT), "__1",
+                    "admin", password_hash("admin", PASSWORD_DEFAULT), "__1",
                     "Admin", "Admin", date('Y-m-d'), "Férfi", date('Y-m-d'),
                     "2", "admin@carsales.com"
                 ]);
@@ -110,8 +110,9 @@ class Database {
                 $stmt = $conn->prepare("INSERT INTO pages(url, page, permission, sortingorder) VALUES (?,?,?,?)");
                 $stmt->execute(["home","Főoldal", "111", 10]);
                 $stmt->execute(["favorites", "Kedvencek", "010", 15]);
+                $stmt->execute(["question", "Írj nekünk!", "010", 17]);
                 $stmt->execute(["contact","Kapcsolat", "111", 20]);
-                $stmt->execute(["addcar", "Új hirdetés", "001", 25]);
+                $stmt->execute(["advert", "Új hirdetés", "001", 25]);
                 $stmt->execute(["admin","Admin","001", 30]);
                 $stmt->execute(["login","Bejelentkezés", "100", 40]);
                 $stmt->execute(["logout","Kilépés", "011", 50]);

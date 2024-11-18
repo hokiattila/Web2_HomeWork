@@ -2,7 +2,6 @@
 
 use models\Admin_Model;
 include(SERVER_ROOT.'models/Admin_Model.php');
-include(SERVER_ROOT.'includes/database.inc.php');
 require_once 'lib/TCPDF-main/tcpdf.php';
 
 require_once __DIR__ . '/../vendor/autoload.php';

@@ -79,6 +79,14 @@ class Database {
                 page VARCHAR(15) NOT NULL,
                 permission VARCHAR(4) NOT NULL,
                 sortingorder TINYINT(4) NOT NULL
+            )",
+                    "CREATE TABLE IF NOT EXISTS `questions` (
+                `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                `name` VARCHAR(255) NOT NULL,
+                `email` VARCHAR(255) NOT NULL,
+                `phone` VARCHAR(50) DEFAULT NULL,
+                `message` TEXT NOT NULL,
+                `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )"
                 ];
 

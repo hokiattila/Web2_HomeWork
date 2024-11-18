@@ -252,3 +252,40 @@ footer .contact {
 .user-table tr:hover {
     background-color: #f1f1f1;
 }
+
+/* Törlés gomb stílusa */
+.delete-btn {
+    background-color: #f44336; /* Vörös szín */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f; /* Sötétebb vörös hover hatás */
+}
+
+/* Üzenet mező */
+.user-table td:nth-child(3) {
+    white-space: pre-wrap;  /* Új sorok megtartása */
+    word-wrap: break-word;  /* Hosszú szavak törése, ha szükséges */
+    max-width: 400px;  /* Maximális szélesség */
+    word-break: break-all; /* Hosszú szavak esetén új sorba törés */
+    padding: 10px;  /* További belső margó */
+    height: auto;  /* Dinamikus magasság a szöveg alapján */
+}
+
+/* A delete gomb stílusa */
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}

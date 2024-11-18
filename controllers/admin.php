@@ -19,10 +19,22 @@ class Admin_Controller {
         $this->model = new Admin_Model();
     }
 
+
     public function main(array $vars): void {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Törlés kezelése
+            if (isset($vars[0]) && $vars[0] == 'delete_message' && isset($vars[1])) {
+                $messageId = (int) $vars[1];  // A törléshez szükséges üzenet ID
+                $this->model->deleteMessage($messageId);  // A törlés végrehajtása
+            }
+        }
+
+
         $users = $this->model->fetchAllUsers();
+        $messages = $this->model->getAllMessages();
         $view = new View_Loader($this->baseName . "_main");
         $view->assign("users", $users);
+        $view->assign("messages", $messages);
         if($vars != null) {
             if ($vars[0] == "export" && $vars[1] == "pdf")
                 $this->exportPDF();
@@ -123,6 +135,16 @@ class Admin_Controller {
         // PDF fájl generálása és letöltés
         $pdf->Output('users.pdf', 'D'); // 'D' paraméter a letöltéshez
         exit();
+    }
+
+    public function deleteMessage(int $messageId): void
+    {
+        // Üzenet törlése az adatbázisból
+        $this->model->deleteMessage($messageId);
+
+        // Visszairányítás az admin felületre
+        header('Location: /ottakocsid/admin');
+        exit;
     }
 
 }

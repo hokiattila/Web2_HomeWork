@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html lang="hu">
 <head>
@@ -15,7 +14,7 @@
 <header>
     <div class="header-container">
         <div class="logo">
-
+            <!-- Logo -->
         </div>
         <nav class="navbar">
             <?php echo Menu::getMenu($viewData['selectedItems']); ?>
@@ -58,6 +57,8 @@
         </table>
     </div>
 
+    <h2 class="section-title">Beküldött Üzenetek</h2>
+
     <!-- Exportálás gombok -->
     <div class="export-buttons">
         <form method="post" action="/ottakocsid/admin/export/excel">
@@ -67,6 +68,43 @@
             <button type="submit" class="btn export-btn">Exportálás PDF-be</button>
         </form>
     </div>
+
+    <!-- Üzenetek táblázat -->
+    <div class="table-container">
+        <?php if (empty($viewData['messages'])): ?>
+            <p>Nincs beérkezett üzenet.</p> <!-- Ha üres az üzenet tömb, ezt jelenítjük meg -->
+        <?php else: ?>
+            <table class="message-table">
+                <thead>
+                <tr>
+                    <th>Név</th>
+                    <th>Email</th>
+                    <th>Üzenet</th>
+                    <th>Dátum</th>
+                    <th>Akció</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($viewData['messages'] as $message): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($message['name']) ?></td>
+                        <td><?= htmlspecialchars($message['email']) ?></td>
+                        <td class="message-cell"><?= nl2br(htmlspecialchars($message['message'])) ?></td>
+                        <td><?= htmlspecialchars($message['created_at']) ?></td>
+                        <td>
+                            <!-- Törlés gomb -->
+                            <form method="post" action="/ottakocsid/admin/delete_message/<?= $message['id'] ?>" style="display:inline;">
+                                <button type="submit" class="btn delete-btn">Törlés</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
+    </div>
+
+
 </div>
 
 <footer>

@@ -40,26 +40,7 @@
 <div class="center">
     <iframe width="1000px" height="500px" src="https://www.youtube.com/embed/YuzClM_OAO0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<div><h1 class="center">Vásárlóink mondták</h1><hr class="custom-hr"></div>
-<div class="review-container">
-    <div class="review">
-        <p class="name">Kiss József</p>
-        <span class="rating">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
-        <p class="comment">Nagyon elégedett vagyok az autókereskedéssel, kiváló kiszolgálást kaptam, és az autó is kiváló állapotban van.</p>
-    </div>
-    <hr>
-    <div class="review">
-        <p class="name">Lakatos Géza</p>
-        <span class="rating">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <p class="comment">Fantasztikus élmény volt az autóvásárlás! A kereskedés személyzete nagyon segítőkész és profi volt.</p>
-    </div>
-    <hr>
-    <div class="review">
-        <p class="name">Nagy János</p>
-        <span class="rating">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
-        <p class="comment">Egy kicsit több figyelmet vártam volna az ügyintézéstől, de összességében elégedett vagyok az autóval.</p>
-    </div>
-</div>
+
 <br><br>
 
 

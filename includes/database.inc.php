@@ -87,6 +87,21 @@ class Database {
                 `phone` VARCHAR(50) DEFAULT NULL,
                 `message` TEXT NOT NULL,
                 `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )",     "CREATE TABLE IF NOT EXISTS reviews (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                stars INT NOT NULL CHECK (stars BETWEEN 1 AND 5),
+                title VARCHAR(255) NOT NULL,
+                name VARCHAR(255) NOT NULL,
+                message TEXT NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            )",
+                    "CREATE TABLE IF NOT EXISTS reviews_responses (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                review_id INT NOT NULL,
+                name VARCHAR(255) NOT NULL,
+                message TEXT NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (review_id) REFERENCES reviews(id) ON DELETE CASCADE
             )"
                 ];
 
@@ -120,6 +135,7 @@ class Database {
                 $stmt->execute(["favorites", "Kedvencek", "010", 15]);
                 $stmt->execute(["question", "Írj nekünk!", "100", 21]);
                 $stmt->execute(["contact","Kapcsolat", "111", 20]);
+                $stmt->execute(["review","Értékelés", "111", 20]);
                 $stmt->execute(["advert", "Új hirdetés", "001", 25]);
                 $stmt->execute(["admin","Admin","001", 30]);
                 $stmt->execute(["login","Bejelentkezés", "100", 40]);

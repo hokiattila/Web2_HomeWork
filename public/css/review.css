@@ -1,0 +1,252 @@
+.map-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.map-text {
+    flex-grow: 1;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+iframe {
+    flex-shrink: 0;
+}
+
+.review-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+.review {
+    margin-bottom: 20px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.rating {
+    color: #ffd700; /* arany csillagok */
+}
+
+.comment {
+    font-style: italic;
+}
+
+
+.intro-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+.intro-text {
+    text-align: justify;
+    line-height: 1.6;
+}
+/* Alap stílusok a body-ra */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header és Footer stílus */
+header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1, footer p {
+    margin: 0;
+}
+
+/* Formák */
+form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+    max-width: 400px;
+}
+
+form h2 {
+    text-align: center;
+    color: #333;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Értékelések listája */
+.review {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 15px auto;
+    width: 25%;
+    max-width: 600px;
+}
+
+.review strong {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.review p {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.review .stars {
+    color: #ffb400;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.review hr {
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+.response {
+    background-color: #f9f9f9;
+    border-left: 4px solid #28a745;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.response strong {
+    color: #28a745;
+}
+
+textarea {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+/* Üzenet mezők */
+textarea {
+    height: 75px;
+}
+
+/* Mobilbarát stílusok */
+@media (max-width: 768px) {
+    form, .review {
+        width: 95%;
+        margin: 10px;
+    }
+}
+/* Középre igazítás */
+.star-rating {
+    gap: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Zökkenőmentes animáció */
+}
+
+/* Üres csillagok alap szín */
+.star {
+    font-size: 30px;
+    color: #ccc; /* Üres csillagok színe */
+    transition: color 0.3s ease, transform 0.2s ease; /* Zökkenőmentes animáció */
+}
+
+.starempty {
+    font-size: 30px;
+    color: #bbb; /* Üres csillagok színe */
+    transition: color 0.3s ease, transform 0.2s ease; /* Zökkenőmentes animáció */
+}
+
+/* Kitöltött csillagok színe */
+.star.filled {
+    color: #ffb400;
+    transform: scale(1.2); /* Növeli a kitöltött csillagok méretét */
+}
+
+/* Hover hatás a csillagoknál (csak az új értékelés formnál) */
+.star-rating.hover .star:hover {
+    color: #ffb400;
+    transform: scale(1.2); /* Növeli a csillagot, ha fölé viszik az egeret */
+}
+
+/* Az értékelésekhez tartozó csillagok nem legyenek hover hatással */
+.review .star {
+    color: #ffb400; /* Csillagok kitöltött állapotban */
+    transform: scale(1);
+}
+
+/* Válaszok */
+.response {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.no-response {
+    font-style: italic;
+    color: #888;
+}
+/* A review elemek elrendezése, három elem egy sorban */
+.reviews-container {
+    display: flex;
+    flex-wrap: wrap; /* Ha nem fér el, a következő sorba megy */
+    justify-content: space-between; /* A csomópontok közötti egyenlő távolság */
+    gap: 20px; /* Kis távolság a review elemek között */
+}
+
+/* Minden review elem egy oszlopra tervezve, hogy három elem férjen el egy sorban */
+.review {
+    width: 30%; /* Három elem egy sorba */
+    box-sizing: border-box; /* Tartalom beleférjen a megadott szélességbe */
+}
+

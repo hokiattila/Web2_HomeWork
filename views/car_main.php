@@ -17,6 +17,7 @@ $model = new Car_Model();
     <title><?=$viewData["car"][0]["brand"]." ".$viewData["car"][0]["modell"]?></title>
 </head>
 <body class="">
+
 <header>
     <div class="container2"></div>
 </header>
@@ -27,8 +28,10 @@ $model = new Car_Model();
 </div>
 <!-- Navigációs menü -->
 <!-- Navigációs menü -->
+
 <?php echo Menu::getMenu($viewData['selectedItems']); ?>
 <div class="container2">
+
     <div class="grid second-nav">
         <div class="column-xs-12">
             <nav>

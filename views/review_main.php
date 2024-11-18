@@ -17,16 +17,10 @@
 </head>
 
 <body>
-<header>
-    <div class="header-container">
-        <div class="logo">
-            <!-- Logó helye -->
-        </div>
-        <nav class="navbar">
-            <?php echo Menu::getMenu($viewData['selectedItems']); ?>
-        </nav>
-    </div>
-</header>
+
+<!-- Loading gif eltüntetése ha betölt az oldal -->
+<!-- A betöltő div -->
+<?php echo Menu::getMenu($viewData['selectedItems']); ?>
 
 <h2 align="center">Új értékelés hozzáadása</h2>
 <?php if($_SESSION['username'] != "unknown"){ ?>
@@ -70,16 +64,17 @@ else { ?>
         <?php foreach ($viewData['reviews'] as $review): ?>
             <div class="review">
                 <strong><?php echo htmlspecialchars($review['name']); ?> (<?php echo $review['stars']; ?> csillag)</strong><br>
-
+                <?php echo nl2br(htmlspecialchars($review['created_at'])); ?><br>
                 <!-- Csillagok megjelenítése a review alapján -->
                 <div class="star-rating">
                     <?php for ($i = 1; $i <= 5; $i++): ?>
-                        <span class="<?php echo $i <= $review['stars'] ? 'star filled' : 'star starempty'; ?>">&#9733;</span>
+                        <span class="<?php echo $i <= $review['stars'] ? 'star' : 'starempty'; ?>">&#9733;</span>
                     <?php endfor; ?>
                 </div>
 
                 <strong> <?php echo htmlspecialchars($review['title']); ?></strong><br>
                  <?php echo nl2br(htmlspecialchars($review['message'])); ?><br>
+
 
                 <br>
                 <?php if (!empty($viewData['responses'])): ?>

@@ -10,16 +10,7 @@
     <title>Vedd fel velünk a kapcsolatot!</title>
 </head>
 <body>
-<header>
-    <div class="header-container">
-        <div class="logo">
-            <!-- Logó helye -->
-        </div>
-        <nav class="navbar">
-            <?php echo Menu::getMenu($viewData['selectedItems']); ?>
-        </nav>
-    </div>
-</header>
+<?php echo Menu::getMenu($viewData['selectedItems']); ?>
 
 <div class="main-container">
     <h1 class="page-title">Kérdőív kitöltése</h1>

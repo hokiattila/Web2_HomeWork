@@ -7,20 +7,12 @@
     <link rel="stylesheet" href="<?='/ottakocsid/'. $viewData['layout_style']?>">
     <link rel="stylesheet" href="/ottakocsid/public/css/admin.css">
     <link rel="stylesheet" href="/ottakocsid/public/css/home.css">
+    <link rel="stylesheet" href="/ottakocsid/public/css/listing.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin felület</title>
 </head>
 <body>
-<header>
-    <div class="header-container">
-        <div class="logo">
-            <!-- Logo -->
-        </div>
-        <nav class="navbar">
-            <?php echo Menu::getMenu($viewData['selectedItems']); ?>
-        </nav>
-    </div>
-</header>
+<?php echo Menu::getMenu($viewData['selectedItems']); ?>
 
 <div class="main-container">
     <h1 class="admin-title">Admin felület</h1>
@@ -57,7 +49,7 @@
         </table>
     </div>
 
-    <h2 class="section-title">Beküldött Üzenetek</h2>
+
 
     <!-- Exportálás gombok -->
     <div class="export-buttons">
@@ -68,7 +60,7 @@
             <button type="submit" class="btn export-btn">Exportálás PDF-be</button>
         </form>
     </div>
-
+    <h2 class="section-title">Beküldött Üzenetek</h2>
     <!-- Üzenetek táblázat -->
     <div class="table-container">
         <?php if (empty($viewData['messages'])): ?>

@@ -61,22 +61,9 @@ iframe {
     text-align: justify;
     line-height: 1.6;
 }
-/* Alap stílusok a body-ra */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
 
-/* Header és Footer stílus */
-header, footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-}
+
+
 
 header h1, footer p {
     margin: 0;

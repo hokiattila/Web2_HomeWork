@@ -6,6 +6,12 @@
     height: 100%;
     margin: 30px;
 }
+.navbar.user-info {
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
 
 .box {
     width: 25%;

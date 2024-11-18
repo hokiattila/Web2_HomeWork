@@ -133,8 +133,8 @@ class Database {
                 $stmt = $conn->prepare("INSERT INTO pages(url, page, permission, sortingorder) VALUES (?,?,?,?)");
                 $stmt->execute(["home","Főoldal", "111", 10]);
                 $stmt->execute(["favorites", "Kedvencek", "010", 15]);
-                $stmt->execute(["question", "Írj nekünk!", "100", 21]);
-                $stmt->execute(["contact","Kapcsolat", "111", 20]);
+                $stmt->execute(["question", "Kapcsolat", "110", 21]);
+                $stmt->execute(["contact","Rólunk", "111", 20]);
                 $stmt->execute(["review","Értékelés", "111", 20]);
                 $stmt->execute(["advert", "Új hirdetés", "001", 25]);
                 $stmt->execute(["admin","Admin","001", 30]);

@@ -1,0 +1,12 @@
+{
+    "name": "kolta/ottakocsid",
+    "authors": [
+        {
+            "name": "Koltai Armand",
+            "email": "koltaiarmi@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^3.4"
+    }
+}
